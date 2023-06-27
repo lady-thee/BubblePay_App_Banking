@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <main>
+        <section class="container mx-auto px-[100px] mt-12 ">
+            <h3 class="font-extrabold text-left max-sm:text-center text-xl w-[80%] text-[#334881]">Create Account</h3>
+            <a href="{% url 'login' %}" class="font-medium max-sm:ml-[40px]  text-[#334881]  dark:text-blue-500 hover:underline">Already have an account?</a>
+            <div class="p-4 border mt-8 rounded-md shadow-lg">
+                <form action= "{% url 'create' %}" method = "POST">
+                    {% csrf_token %}
+                    <div class="mb-6">
+                        <label for="email" class="block mb-2 text-sm font-medium text-[#334881] dark:text-white">Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block mb-2 text-sm font-medium text-[#334881] dark:text-white">Password</label>
+                        {{ form.password }}
+                    </div>
+                    <div class="mb-6">
+                        <label for="confirmpassword" class="block mb-2 text-sm font-medium text-[#334881] dark:text-white"> Confirm Password</label>
+                        <input type="password" placeholder="confirm password" name="confirm_pass"  class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' required>
+                    </div>
+                  <button type="submit" class="text-white bg-[#334881] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                </form>
+            </div>
+        
+        </section>
+        <div class="md:mt-[200px] max-sm:mt-[150px]"></div>
+
+    </main>
+{% endblock %}

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    {% load static %}
+<main>
+    <section class="container px-[100px]  flex gap-[300px] max-sm:gap-[50px] items-center mx-auto mt-12 max-sm:mt-8 max-sm:flex-col max-sm:w-[98%] max-sm:px-0">
+        <div class=" w-[700px] py-10  max-sm:w-[400px] max-md:w-[700px] max-sm:py-4">
+            <h1 class="mb-4 text-5xl font-extrabold leading-none tracking-tight text-[#334881] md:text-5xl lg:text-6xl dark:text-white max-sm:text-center max-sm:leading-[4rem]">Banking made effortless, <br>Anytime <br>Anywhere</h1>
+            <p class="mb-6 text-lg font-normal text-[#334881] lg:text-xl  dark:text-gray-400 max-sm:w-[70%] max-sm:mx-auto max-sm:text-center max-sm:mt-4">Powerful transactions done over effortless services, from credits and other transactions. Banking made easy</p>
+            <a href="{% url 'signup' %}" class="pl-4 pr-4 w-[250px] outline text-white bg-[#334881] hover:bg-[#3e68e6] focus:ring-4 focus:outline-none focus:ring-blue-400 font-normal font-sans rounded-sm text-md py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 max-sm:ml-[150px]">Register</a>
+    
+        </div>
+        <div class=" w-[500px] max-sm:mt-10  max-sm:w-[500px]  max-md:w-[700px] p-10 max-sm:p-[50px] ">
+                <img src="{% static 'images/credit_card2.png' %}" class="w-[350px] max-sm:mx-12 rotate-[40deg] mr-5 max-sm:w-[300px]" alt="credit card">
+
+                <img src="{% static 'images/credit_card1.png' %}" class="w-[350px] max-sm:mx-12 rotate-[-10deg] mr-3 max-sm:w-[300px]" alt="credit card">
+        </div>
+
+
+    </section>
+
+ 
+    <div class="px-[100px]  max-sm:mt-16">
+        <ul class="flex max-sm:flex-col max-sm:items-center max-sm:justify-center">
+            <li class="flex gap-3 items-center p-4 max-sm: max-sm:w-[300px]">
+                <h3 class="text-[#334881] font-extrabold text-4xl">30</h3>
+                <span class="text-[#C0C7DD] text-xl w-[55%] leading-4 max-sm:w-[70%]  font-medium">Years of experience in banking</span>
+            </li>
+            <li class="w-[1px]  bg-[#C0C7DD] max-sm:hidden"></li>
+            <li class="flex gap-3  items-center p-4 max-sm: max-sm:w-[300px]">
+                <h3 class="text-[#334881] pl-4 font-extrabold text-4xl max-sm:pl-0">20%</h3>
+                <span class="text-[#C0C7DD] text-xl w-[50%] max-sm:w-[80%] leading-4 font-medium">Cashbacks from each transactions</span>
+            </li>
+        </ul>
+    </div>
+
+    <section class="container  h-[100px] mx-auto flex bg-[#ADBFEF] justify-around p-8 gap-[40px] items-center mt-14 max-sm:flex-col max-sm:h-auto max-sm:mt-16 max-sm:w-[98%]">
+        <img src="{% static 'images/visa.png' %}" class="w-[100px] h-[50px]">
+        <img src="{% static 'images/paypal-removebg-preview.png' %}" class="w-[100px] h-[50px]">
+        <img src="{% static 'images/mastercard-removebg-preview.png' %}" class="w-[50px] h-[50px] " >
+        <img src="{% static 'svg/western.webp' %}" class="w-[180px] h-[100px]">
+    </section>
+
+    <section class="container mx-auto mt-14 max-sm:hidden">
+        <p class="text-center capitalize text-[#334881] font-bold w-[50%] mx-auto text-4xl">Effortless banking feature you can get at BubblePay</p>
+        <p class="text-center pt-3 capitalize text-[#334881] font-medium w-[30%] mx-auto text-xl">BubblePay offers customers consistent and reliable services to meet their needs</p>
+    </section>
+
+
+    <section class="container  px-[100px] mx-auto flex gap-[100px] py-5 mt-14 max-sm:px-[35px] max-sm:flex-col">
+        <div class="w-[650px]  flex justify-between items-center bg-[#334881] rounded-[15px] border shadow-lg  p-4 max-sm:w-[340px]">
+            <div class="p-5 w-[400px] ">
+                <h3 class="font-extrabold text-xl w-[80%] text-white pb-8 ">Manage your finances with ease</h3>
+                <p class="font-thin text-xs text-white leading-5">Check your account balances and review transaction history
+                    effortlessly and Enjoy hassle-free access to statements and important documents</p>
+            </div>
+        
+            <img src="{% static 'images/money-growth-1.png' %}" class="w-[130px] h-[130px] max-sm:w-[60px] align-middle" alt="money growth">
+        </div>
+        <div class="w-[600px] absolute top-[1200px] left-[800px] flex flex-col gap-[10px] items-center rounded-[15px] border-r-2 border-b-2 shadow-lg p-4 max-sm:left-12 max-sm:top-[2200px] max-sm:w-[300px]">
+            <img src="{% static 'images/money-transfer-1.png' %}" class="w-[100px]  h-[80px] align-middle" alt="money growth">
+            <h3 class="font-extrabold text-center text-xl w-[80%] max-sm:w-[90%] text-[#334881]">Seamless fund Transfer</h3>
+            <p class="text-[14px] text-[#334881] w-[50%] max-sm:w-[72%] text-center">Send funds to friends, family, or business associates instantly.</p>
+        </div>
+    </section>
+
+    <section class="container  px-[100px] mx-auto flex flex-row-reverse gap-[100px] py-5 mt-48 max-sm:px-[35px] max-sm:flex-col max-sm:mt-[300px]">
+        <div class="w-[650px]  flex justify-between items-center bg-[#334881] rounded-[15px] border shadow-lg p-4 max-sm:w-[340px]">
+            <div class="p-5 w-[400px]">
+                <h3 class="font-extrabold text-xl w-[80%] text-white pb-8">Manage Your Cards with Confidence</h3>
+                <p class="font-thin text-xs text-white leading-5">
+                    Activate or block your cards instantly to ensure security 
+                    and Monitor card transactions, 
+                    view statements, and set spending limits</p>
+            </div>
+            
+            <img src="{% static 'images/card-security.png' %}" class="w-[130px] h-[130px] max-sm:w-[60px]  align-middle" alt="money growth">
+        </div>
+        <div class="w-[600px]  absolute top-[1400px] left-[100px] flex flex-col gap-[10px] items-center rounded-[15px] border-l-2 border-b-2 shadow-lg p-4 max-sm:left-[50px] max-sm:top-[2830px]  max-sm:w-[300px]">
+            <img src="{% static 'images/customer-support.png' %}" class="w-[100px]  h-[80px] align-middle" alt="money growth">
+            <h3 class="font-extrabold text-center text-xl w-[80%] max-sm:w-[90%] text-[#334881]">24/7 Customer Support</h3>
+            <p class="text-[14px] text-[#334881] w-[50%] max-sm:w-[72%] text-center">Get assistance with account-related inquiries or issues</p>
+        </div>
+    </section>
+
+    <section class="container  px-[100px] flex gap-[50px] mx-auto py-5 mt-24  max-sm:mt-[20rem] max-sm:items-center max-sm:justify-center max-sm:flex-col max-sm:px-[35px] ">
+        <div class=" w-[700px] py-10 max-sm:w-[380px]">
+            <h3 class="mb-4 text-4xl font-bold leading-none tracking-tight text-[#334881] md:text-5xl lg:text-6xl dark:text-white max-sm:text-center">Bubble Pay  Gives Free Instant Debit Card To  New Customers</h3>
+            <p class="mb-6 text-lg font-normal text-[#334881] lg:text-xl  dark:text-gray-400 max-sm:text-center max-sm:text-[1rem] max-sm:leading-none">Powerful transactions done over effortless services, from credits and other transactions. Banking made easy. BubblePay gives easy and instant cards after an easy process.</p>
+        </div>
+        <img src="{% static 'images/Group-9.png' %}" class="w-[500px]  mr-3 max-sm:w-[400px]  max-sm:mx-[-50px]" alt="christina">
+    </section>
+
+
+    <section class="container  px-[100px] flex gap-[50px] mx-auto py-5 mt-24 mb-32 max-sm:flex-col max-sm:px-[35px]">
+        <div class=" w-[500px] py-10 max-sm:w-[320px]">
+            <h3 class="mb-4 text-[2rem] font-bold leading-none tracking-tight text-[#334881] md:text-[2rem] lg:text-[3rem] dark:text-white max-sm:text-center">Ready to Get Started?</h3>
+            <p class="mb-6 text-[1rem] w-[50%] font-normal text-[#334881] lg:text-[1rem]  dark:text-gray-400 max-sm:w-[100%] max-sm:text-center max-sm:leading-none">Powerful transactions done over effortless services, from credits and other transactions. Banking made easy. Ready to get started?</p>
+            <div class="w-[300px] flex gap-8 items-center  max-sm:max-sm:mx-auto">
+                <a href="{% url 'signup' %}" class="pl-4 pr-4 w-[250px]  text-white bg-[#334881] hover:bg-[#3e68e6] focus:ring-4 focus:outline-none focus:ring-blue-400 font-normal font-sans rounded-sm text-md py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Join now</a>
+                <a href="#" class="pl-4 pr-4 w-[250px]  bg-white border border-[#334881] text-[#334881] hover:bg-[#334881] hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-400 font-normal font-sans rounded-sm text-md py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Learn more</a>
+            </div>
+        </div>
+
+        <div class="w-[350px] h-[230px] flex mt-8 flex-col gap-[10px] items-start rounded-[15px] border-r-2 border-b-2 shadow-lg  p-4">
+            <img src="{% static 'images/Group-8.png' %}" class="w-[100px]  h-[80px] align-middle" alt="money growth">
+            <h3 class="font-extrabold text-left text-xl w-[80%] text-[#334881]">Convenient Bill Payments</h3>
+            <p class="text-[14px] text-[#334881] w-[70%] text-left">Send funds to friends, family, or business associates instantly.</p>
+        </div>
+        <div class="w-[350px] h-[230px] mt-8 flex flex-col gap-[10px] items-start rounded-[15px] border-r-2 border-b-2 shadow-lg  p-4">
+            <img src="{% static 'images/customer-support.png' %}" class="w-[100px]  h-[80px] align-middle" alt="money growth">
+            <h3 class="font-extrabold text-left text-xl w-[80%] text-[#334881]">Effortless  Deposits</h3>
+            <p class="text-[14px] text-[#334881] w-[70%] text-left">Send funds to friends, family, or business associates instantly.</p>
+        </div>
+
+       
+    </section>
+
+
+</main>
+  
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% autoescape off %} 
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <style>
+        h1{
+            color: #334881;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        p{
+            color: #334881;
+            font-family: sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+        }
+        a{
+            color: #334881;
+            font-family: sans-serif;
+            font-weight: 400;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+    </style>
+    
+</head>
+<body class="bg-[#ADBFEF]">
+    <h1 class="text-[#334881] font-sans font-semibold text-xl">Hey there, you are almost there!</h1>
+    <p class="text-[#334881] text-lg font-sans">Please click link to verify your account</p>
+    <a class="underline" class="underline text-center text-[#5d7cd1] uppercase" href="http://{{ domain }}{% url 'activate' uidb64=uid token=token%}">click me now!</a> 
+</body>
+</html>
+
+{% endautoescape %}
