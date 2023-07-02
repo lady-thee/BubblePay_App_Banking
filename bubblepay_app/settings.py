@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'home_app.apps.HomeAppConfig',
     'customers_app.apps.CustomersAppConfig',
     'dashboard.apps.DashboardConfig',
+    'transactions.apps.TransactionsConfig',
 
     'compressor',
     'phonenumber_field',
@@ -114,6 +115,9 @@ DATABASES = {
 }
 # AUTH USER MODEL 
 AUTH_USER_MODEL = 'customers_app.Users'
+
+LOGIN_REDIRECT_URL = "login"
+LOGOUT_REDIRECT_URL = "login"
 
 
 # Password validation

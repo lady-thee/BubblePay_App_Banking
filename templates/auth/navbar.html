@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load compress %}
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BubblePay</title>
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'src/output.css' %}">
+        <link rel="stylesheet" href="/static/src/output.css?{% now 'U' %}"/>
+        <!-- <link rel="stylesheet" href=" /static/css/main.css?{% now 'U' %}"> -->
+        <link rel="stylesheet" href="{% static 'src/main.css' %}">
+        <!-- <link rel="stylesheet" href=" /static/src/output.css?{% now 'U' %}"> -->
+    {% endcompress %}
+</head>
+<body class="p-0 m-0 bg-[#ADBFEF]">
+    <nav class=" border-gray-200  sm:px-4 py-2.5  dark:bg-gray-800">
+        <div class="container px-[100px] max-sm:px-[20px] sm:px-[50px] max-md:px-[50px] flex flex-wrap items-center justify-between mx-auto">
+          <a href="{% url 'home' %}" class="flex items-center">
+              <img src="{% static 'images/LOGO.png' %}" class="h-8 mr-3 sm:h-10 max-sm:h-12" alt="bubblepay Logo" />
+              <!-- <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite Django</span> -->
+          </a>
+          <span class=" text-2xl text-center font-bold tracking-tight text-[#334881]">Verify Your Email</span>
+        </div>
+    </nav>
+      
+
+  
+    {% block content %}
+
+    {% endblock %}
+
+
+
+   
+
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+<script src="https://kit.fontawesome.com/df2d2fdd9c.js" crossorigin="anonymous"></script>
+{% compress js %}
+<script src="{% static 'javascript/app.js' %}"></script>
+{% endcompress %}
+</html>

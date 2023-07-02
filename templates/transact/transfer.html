@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+
+
+{% block content %}   
+    <!-- Welcome Section -->
+    <section class="mt-6 ">
+        <div class="flex bg-[#FFF2FB] items-center justify-between mx-6 py-3 md:py-6 px-6 md:px-24">
+            <div class="space-y-3 md:space-y-6 text-[#334881]">
+                <h1 class="font-bold text-2xl md:text-4xl">10% Cashback on <br> Transfers to all Banks</h1>
+                
+            </div>
+            <div class="hidden md:block">
+                <img src="img/transfer-hero.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- Transfer Limit -->
+    <section class="mt-6 mx-6 md:mx-auto md:w-3/5 ">
+        <div class="flex flex-col md:flex-row bg-[#FFF2FB] md:items-center justify-between py-3 md:py-12 px-6 md:px-24 rounded-3xl space-y-3">
+            <div class="text-[#334881]">
+                <h1 class="font-bold text-base md:text-xl">Your Transfer Limit is: </h1>
+            </div>
+            <div class="space-y-1 md:space-y-3 text-[#334881] md:text-right">
+                <h1 class="font-bold text-lg md:text-3xl">$3,000,000</h1>
+                <h1 class="text-base md:text-xs font-light md:font-semibold text-[#F69CDA]">Click Here To Change Limit</h1>
+            </div>
+        </div>
+    </section>
+
+<section class="mx-6 py-6 px-6 md:px-24 mt-6">
+    
+        <form action="{% url 'transfer' %}" method="post">
+            {% csrf_token %}
+            <div class="mt-6">
+                <label for="account number" class="block mb-3 text-[#ADBFEF] text-xl font-semibold">Receiver's Account Number</label>
+                <input type="text" name="receiver" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+            <span class="text-[#334881]">{{ account }}</span>
+            <div class="mt-6">
+                <p class="text-[#ADBFEF] font-semibold">Alert Type</p>
+                <select name="alert" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="0" class="text-[#334881]">Debit</option>
+                    <option value="1" class="text-[#334881]">Credit</option>
+                </select>
+            </div>
+            <div class="mt-6">
+                <p class="text-[#ADBFEF] font-semibold">Amount</p>
+                <div class="col-md-12 mb-4">
+                    <input type="number" multiple name="amount" id="amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0.00">
+                </div>
+            </div>
+    
+            <div class="mt-6">
+                <p class="text-[#ADBFEF] font-semibold">Remarks</p>
+                <div class="col-md-12 mb-4">
+                    <input type="text" name="remark" id="remarks" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="eg meat, eggs?">
+                </div>
+            </div>
+            <div class="mt-6">
+                <label for="bank pin" class="block mb-3 text-[#ADBFEF] text-xl font-semibold">Bank Pin</label>
+                <input type="text" name="pin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            </div>
+    
+            <button type="submit">submit</button>
+        </form>
+</section>
+
+    <!-- Beneficiaries section -->
+    <!-- <section class="mt-6 mx-6">
+        <div class="flex items-center justify-between py-6 px-6 md:px-24">
+            <div class="text-[#334881]">
+                <h1 class="font-bold text-base md:text-xl">Beneficiaries</h1>
+            </div>
+            <div class="text-[#334881]">
+                <h1 class="font-bold text-base md:text-xl">View all</h1>
+            </div>
+        </div>
+        <div class="flex flex-row space-x-10 md:px-24 overflow-x-auto">
+            <div class="flex flex-col w-fit">
+                <div class="md:px-12 px-10 py-8 md:py-10 bg-[#F69CDA] rounded-full">
+                    <p class="font-bold text-xl md:text-4xl text-[#334881]">D</p>
+                </div>
+                <p class="text-center text-[#334881]">David</p>
+            </div>
+            <div class="flex flex-col w-fit space-y-2">
+                <div class="md:px-12 px-10 py-8 md:py-10 bg-[#334881] rounded-full">
+                    <p class="font-bold text-xl md:text-4xl text-white">D</p>
+                </div>
+                <p class="text-center text-[#334881]">David</p>
+            </div>
+            <div class="flex flex-col w-fit space-y-2">
+                <div class="md:px-12 px-10 py-8 md:py-10 bg-[#F69CDA] rounded-full">
+                    <p class="font-bold text-xl md:text-4xl text-[#334881]">D</p>
+                </div>
+                <p class="text-center text-[#334881]">David</p>
+            </div>
+            <div class="flex flex-col w-fit space-y-2">
+                <div class="md:px-12 px-10 py-8 md:py-10 bg-[#334881] rounded-full">
+                    <p class="font-bold text-xl md:text-4xl text-white">D</p>
+                </div>
+                <p class="text-center text-[#334881]">David</p>
+            </div>
+            <div class="flex flex-col w-fit space-y-2">
+                <div class="md:px-12 px-10 py-8 md:py-10 bg-[#F69CDA] rounded-full">
+                    <p class="font-bold text-xl md:text-4xl text-[#334881]">D</p>
+                </div>
+                <p class="text-center text-[#334881]">David</p>
+            </div>
+            <div class="flex flex-col w-fit space-y-2">
+                <div class="md:px-12 px-10 py-8 md:py-10 bg-[#334881] rounded-full">
+                    <p class="font-bold text-xl md:text-4xl text-white">D</p>
+                </div>
+                <p class="text-center text-[#334881]">David</p>
+            </div>
+            <div class="flex flex-col w-fit space-y-2">
+                <div class="md:px-12 px-10 py-8 md:py-10 bg-[#F69CDA]">
+                    <p class="font-bold text-xl md:text-4xl text-[#334881]">D</p>
+                </div>
+                <p class="text-center text-[#334881]">David</p>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Send Money -->
+    <!-- <section class="mx-6 py-6 px-6 md:px-24 mt-6">
+        <p class="text-[primaryBlue] font-bold text-base md:text-xl">Send Money</p>
+        <div class="mt-8">
+            <form action="{% url 'transfer' %}" method="POST">
+                {% csrf_token %}
+                <div class="" id="hide">
+                    
+                    <div class="mt-6">
+                        <label for="Account name" class="block mb-3 text-[#ADBFEF] text-xl font-semibold">Receiver's Account Name</label>
+                        <select name="receivers" id="customers" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="~" class="">~</option>
+                            {% for customer in customers %}
+                            <option value="{{ customer.id }}" class="text-[#334881]">{{ customer.lastname }} {{ customer.firstname }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mt-6">
+                        <label for="Account name" class="block mb-3 text-[#ADBFEF] text-xl font-semibold">Receiver's Account Number</label>
+                        <input type="text" name="receiver" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-[#ADBFEF] font-semibold">Alert Type</p>
+                        <select name="alert" id="occupation" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="0" class="text-[#334881]">Debit</option>
+                            <option value="1" class="text-[#334881]">Credit</option>
+                        </select>
+                    </div>
+                     <div class="mt-6"> -->
+                        <!-- <p class="text-[#ADBFEF] font-semibold">Beneficiary</p>
+                        <div class="col-md-12 mb-4">
+                            <input type="text" name="username" id="username" class="form_input_big" placeholder="">
+                        </div>
+                    </div>  -->
+                    <!-- <div class="mt-6">
+                        <p class="text-[#ADBFEF] font-semibold">To account</p>
+                        <div class="col-md-12 mb-4">
+                            <input type="text" name="username" id="username" class="form_input_big" placeholder="">
+                        </div>
+                    </div> -->
+                    <!-- <div class="mt-6">
+                        <p class="text-[#ADBFEF] font-semibold">Amount</p>
+                        <div class="col-md-12 mb-4">
+                            <input type="number" multiple name="amount" id="amount" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="0.00">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="text-[#ADBFEF] font-semibold">Remarks</p>
+                        <div class="col-md-12 mb-4">
+                            <input type="text" name="remark" id="remarks" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="eg meat, eggs?">
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- bank pin  -->
+                    <!-- <div class="mt-6">
+                        <label for="bank pin" class="block mb-3 text-[#ADBFEF] text-xl font-semibold">Bank Pin</label>
+                        <input type="text" name="pin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div> -->
+    
+               
+            </div>
+            
+                        <!-- <div class="flex flex-row items-center space-x-3 w-full justify-end">
+                <p>Add another transfer</p>
+                <div class="bg-[#334881] p-1 md:p-3 items-center rounded-full ">
+                    <svg width="20" height="20" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M33.8346 19.4002H19.4048V33.83H14.5949V19.4002H0.165039V14.5902H14.5949V0.1604H19.4048V14.5902H33.8346V19.4002Z" fill="white"/>
+                    </svg>
+                </div>
+                        </div> -->
+                <!-- <div class="text-center mt-6 rounded-lg">
+                    <button type="submit" class="px-12 py-2 bg-[#334881] text-white font-semibold">Transfer</button>
+                </div>
+            </form> -->
+    </section>
+
+    <div class="mt-[200px]"></div>
+
+   
+{% endblock %}

@@ -17,6 +17,7 @@ from .utils import generator_token
 
 from django.core.mail import EmailMessage
 import random
+import time
 
 
 def createAccountNumber():
@@ -48,10 +49,10 @@ def activate_token(request, uidb64, token):
         user.is_email_verified = True
         user.save()
         messages.success(request, 'Successfully verified email')
-        return redirect(reverse('signup'))
+        return redirect(reverse('login'))
     else:
         messages.error(request, 'Verification link was invalid')
-        return redirect(reverse('create'))
+        return redirect(reverse('signup'))
 
 
 def sendActivationMail(user, request):
@@ -78,35 +79,35 @@ def sendActivationMail(user, request):
 
 
 
-def loadUserCreatePage(request):
-    form = UsersCreationForm()
-    context = {
-        'form': form,
-    }
+# def loadUserCreatePage(request):
+#     form = UsersCreationForm()
+#     context = {
+#         'form': form,
+#     }
 
-    if request.method == 'POST':
-        form = UsersCreationForm(request.POST)
-        confirm = request.POST.get('confirm_pass', False)
-        if form.is_valid():
-            email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            if Users.objects.filter(email=email).exists():
-                messages.error(request, 'Email already exists!')
-            else:
-                if password != confirm:
-                    messages.error(request, 'Passwords don\'t match!')
-                else:
-                    user = createUser(email, password)
-                    messages.success(request, 'Successfully created!')
-                    sendActivationMail(user, request)
+#     if request.method == 'POST':
+#         form = UsersCreationForm(request.POST)
+#         confirm = request.POST.get('confirm_pass', False)
+#         if form.is_valid():
+#             email = form.cleaned_data['email']
+#             password = form.cleaned_data['password']
+#             if Users.objects.filter(email=email).exists():
+#                 messages.error(request, 'Email already exists!')
+#             else:
+#                 if password != confirm:
+#                     messages.error(request, 'Passwords don\'t match!')
+#                 else:
+#                     user = createUser(email, password)
+#                     messages.success(request, 'Successfully created!')
+#                     sendActivationMail(user, request)
                     
                     
-        else:
-            messages.error(request, 'Form is not validated')
-            raise ValueError
+#         else:
+#             messages.error(request, 'Form is not validated')
+#             raise ValueError
             
 
-    return render(request, 'auth/pages/usercreate.html', context)
+#     return render(request, 'auth/pages/usercreate.html', context)
 
 
 def loadSignUpPage(request):
@@ -122,6 +123,7 @@ def loadSignUpPage(request):
         profileform = CustomerCreationForm(request.POST, request.FILES)
         account_num = createAccountNumber()
         confirm = request.POST.get('confirm_pass', False)
+        pin = request.POST.get('pin', False)
         if userform.is_valid() and profileform.is_valid():
             email = userform.cleaned_data['email']
             password = userform.cleaned_data['password']
@@ -140,14 +142,16 @@ def loadSignUpPage(request):
                     messages.error(request, 'Passwords don\'t match!')
                 else:  
                     user = Users.objects.create_user(email=email, password=password)
+                    customers = Customers.objects.create(user=user, username=username, firstname=firstname, lastname=lastname, mobile=mobile, location=location, photo=photo, BVN=bvn)
+                    account = Account.objects.create(owner=user, account_number=account_num, pin=pin)
+                    customers.save()
+                    account.save()
                     messages.success(request, 'Successfully created!')
                     messages.info(request, 'Verify email using link in email')
                     sendActivationMail(user, request)
-                    customers = Customers.objects.create(user=user, username=username, firstname=firstname, lastname=lastname, mobile=mobile, location=location, photo=photo, BVN=bvn)
-                    account = Account.objects.create(owner=user, account_number=account_num)
-                    customers.save()
-                    account.save()
                     messages.success(request, 'Account successfully created!')
+                    time.sleep(3)
+                    return redirect('success')
                        
         else:
             print(profileform.errors)
@@ -170,3 +174,6 @@ def loadLoginPage(request):
 
     return render(request, 'auth/pages/login.html')
 
+
+def loadSuccessPage(request):
+    return render(request, 'auth/success.html')
