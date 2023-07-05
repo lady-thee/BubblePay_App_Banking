@@ -169,6 +169,7 @@ def loadLoginPage(request):
         if user is not None:
             login(request, user)
             print(user, request.user.is_authenticated)
+            messages.success(request, 'Logged In Successfully!')
             return redirect('dashboard')
 
 

@@ -106,9 +106,9 @@ class Account(models.Model):
     account_name = models.CharField(max_length=200, null=False, default='')
     account_number = models.CharField(max_length=10, blank=False, null=False)
     balance = models.DecimalField(decimal_places=2, max_digits=10, null=True, default=10000)
-    pin = models.CharField(max_length=5, null=False, default='')
+    
     
 
     def __str__(self) -> str:
-        return self.account_name
+        return str(self.balance)
 

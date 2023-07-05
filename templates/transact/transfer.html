@@ -2,6 +2,7 @@
 
 
 {% block content %}   
+{% load static %}
     <!-- Welcome Section -->
     <section class="mt-6 ">
         <div class="flex bg-[#FFF2FB] items-center justify-between mx-6 py-3 md:py-6 px-6 md:px-24">
@@ -10,7 +11,7 @@
                 
             </div>
             <div class="hidden md:block">
-                <img src="img/transfer-hero.png" alt="">
+                <img src="{% static 'images/transfer-hero.png' %}" alt="">
             </div>
         </div>
     </section>
@@ -23,7 +24,7 @@
             </div>
             <div class="space-y-1 md:space-y-3 text-[#334881] md:text-right">
                 <h1 class="font-bold text-lg md:text-3xl">$3,000,000</h1>
-                <h1 class="text-base md:text-xs font-light md:font-semibold text-[#F69CDA]">Click Here To Change Limit</h1>
+                <!-- <h1 class="text-base md:text-xs font-light md:font-semibold text-[#F69CDA]">Click Here To Change Limit</h1> -->
             </div>
         </div>
     </section>
@@ -57,12 +58,11 @@
                     <input type="text" name="remark" id="remarks" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="eg meat, eggs?">
                 </div>
             </div>
-            <div class="mt-6">
-                <label for="bank pin" class="block mb-3 text-[#ADBFEF] text-xl font-semibold">Bank Pin</label>
-                <input type="text" name="pin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-            </div>
+        
     
-            <button type="submit">submit</button>
+            <div class="text-center mt-6 rounded-lg">
+                <button type="submit" class="px-12 py-2 bg-[#334881] text-white font-semibold">submit</button>
+            </div>
         </form>
 </section>
 

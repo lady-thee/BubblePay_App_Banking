@@ -1,2 +1,10 @@
     
-  
+  {% if messages %}
+  {% for message in messages %}
+     <div class="messages flex w-[500px] py-4 mx-auto justify-evenly items-center message {{ message.tags }}" id="messagebody">        
+             <div class="font-sen">
+                 <p>{{ message }}</p>
+             </div>      
+     </div>
+  {% endfor %}
+  {% endif %}
